@@ -16,7 +16,7 @@ Input Parameters:
 
 workflow {
 
-    read_pairs_ch = Channel.fromPath("${params.workingDir}/samplesheet_1kmouse.csv").splitCsv(header:true)
+    read_pairs_ch = Channel.fromPath("${params.workingDir}/resources/samplesheet.csv").splitCsv(header:true)
        .map{ row-> tuple(row.suppliedID) }
        .view()
     MKREF()

@@ -1,21 +1,20 @@
 #!/bin/bash
-#SBATCH -p compute_amd
+#SBATCH -p htc_genoa
 #SBATCH --mem=10GB
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --tasks-per-node=1
-#SBATCH -t 02:00:00 
+#SBATCH -t 05:00:00 
 #SBATCH -o slurm/%J.out
 #SBATCH -e slurm/%J.err
 #SBATCH --job-name=NEXT
-#SBATCH --account=scw2358
-#SBATCH --reservation=training-scrnaseq-20250224
+#SBATCH --reservation=training_scrna_seq_20260629
 
 myDir=$(pwd)
 
 module load java 
-module load nextflow/24.10.4
-module load cellranger/7.2.0
+module load Nextflow/25.04.6
+module load CellRanger/10.0.0
 
 nextflow run ${myDir}/main.nf --aggr true -with-trace
 
